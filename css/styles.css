@@ -1,0 +1,333 @@
+/* CSS Resets for our document*/
+/* 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+} */
+
+/* HTML5 display-role reset for older browsers */
+
+/* article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+} */
+
+/* ############################################ */
+/* End CSS Resets */
+
+/* COLOR PALETTE
+#F7FFF7 - almost white
+#343434 - dark gray - almost black
+#2F3061 - blue dark
+#FFE66D - yellow
+#A1C6D7 - blue light 
+*/
+
+
+
+/*                                GLOBAL  STYLES
+------------------------------------------------------------------------------ */
+
+/* The Box Model Fix 
+Applying a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  /* This text color will be inhereted by all the nested elements except the links which have 
+  their own default color */
+  color: #343434;
+  /* Removing the defoult margin and padding of the browser  */
+  margin: 0;
+  padding: 0;
+  /* I use the imported from Google API Montserrat font-family  */
+  font-family: "Montserrat", sans-serif;
+  /* Adding a base font-size to replace the browser's default */
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+img {
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+/* General styling for the links.
+I could have used a:link here but all my anchors are links */
+a {
+  color: #ffe66d;
+  margin: 5px;
+}
+
+/* I dont want for this design to show the visited links so I would only 
+add a hover pseudo class. */
+*/ a:hover {
+  text-decoration: none;
+}
+
+/* The font I chose for the headings runs small, so I'm going to bump it up a bit */
+h1 {
+  font-size: 100px;
+}
+h2 {
+  font-size: 45px;
+}
+
+/* I use, only for h2 and h3, the imported Caveat font-family  */
+h1,
+h2 {
+  font-family: "Caveat", cursive;
+  /* I remove the default bold weight from both h1 and h2  */
+  font-weight: 400;
+  /* Removing the margin space around the headings so the h1 and h2 to be closer together */
+  margin: 0;
+}
+
+/* I use this class to wrap only the content in all sections and apply
+the background-color to the parent element so that it extends to the edges of the page. */
+.content-wrap {
+  /* Using Fluid layout techniques.
+  This class controls the style for our page-containing blocks. I can apply here 
+  percentage based values and max-width properties insted of fixed width pixels. */
+  max-width: 800px;
+  /* We can still use width so when the vewport becomes smaller than the max width,
+  it will apply it. To stay relative to its container I use a persentage value */
+  width: 85%;
+  margin: 0 auto;
+  /* I add padding here instead of removing the margin from every section.
+  This way it pushes all the content inward, including the margin space of the element.  */
+  padding: 60px 0;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
+/* I'll use the siblings combinators to select and style the two paragraphs after the h3 in both
+ work and education sections */
+.item-details h3 + p {
+  font-style: italic;
+}
+.item-details h3 ~ p {
+  margin: 0;
+}
+
+/* To visually separate the projects and jobs from one another, I'll add o border-bottom.
+  Instead of adding a class to every item, I'll add a shared class to the containers and I'll use
+  the child combinator selector  */
+.divider > section {
+  border-bottom: 1px dashed #343434;
+  padding: 25px 0;
+}
+/* I use the last of type pseudo-class selector to remove the border from the last item */
+.divider > section:last-of-type {
+  border-bottom: none;
+}
+
+
+/*                                PROFILE
+------------------------------------------------------------------------------ */
+
+/* I have only one header in the page so I use the type selector */
+header {
+  background-color: #2f3061;
+  color: #f7fff7;
+}
+
+
+/*                                PROJECTS
+------------------------------------------------------------------------------ */
+
+.projects {
+  background-color: #f7fff7;
+}
+/* I choose a darker color only for the links in the projects section
+because they are on a light background. */
+.projects a {
+  color: #2f3061;
+}
+/* I make the links that point to a project like buttons,
+for this I create a new .btn class to style them.*/
+.projects .btn {
+  color: #f7fff7;
+  background-color: #2f3061;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 4px;
+  /* I change the button to inline-block to align verticaly when you add padding and margin 
+  The button is now inside of that padding space.  */
+  display: inline-block;
+}
+/* The buttons change oppacity when being hovered on */
+.projects .btn:hover {  
+  background-color: rgba(47, 48, 97, 80%);
+}
+/* I create a project-item class to clear the float to the parent element 
+rather than to the paragraph because I want it to flow around the image */
+.project-item {
+  overflow: hidden;
+}
+
+.project-item h3 {
+  margin-top: 0;
+}
+
+
+/*                              WORK  EXPERIENCE
+------------------------------------------------------------------------------ */
+
+.work-experience {
+  background-color: #a1c6d7;
+}
+
+/* I'll remove the space between paragraphs */
+.job-summary p {
+  margin-bottom: 0;
+}
+.job-summary p ~ ul {
+  margin: 0;
+}
+.job-summary:last-child p:nth-child(2) {
+  margin: 0;
+}
+
+
+/*                                EDUCATION
+------------------------------------------------------------------------------ */
+
+.education {
+  /* I'll use FLEXIBLE background images */
+  background-image: url(../images/joanna-kosinska-unsplash.jpg);
+  /* I'll add a background-size of cover to make sure the area is always covered */
+  background-size: cover;
+  /* To make sure that the pencils are always displayed */
+  background-position: top right;
+  /* Adding some height to the area and allow more of the image to show */
+  padding-bottom: 100px;
+}
+
+/* I add some height to the area and allow more of the image to show */
+.education p {
+  width: 60%;
+}
+
+
+/*                             CONDUCT  INFO
+------------------------------------------------------------------------------ */
+
+footer {
+  background-color: #2f3061;
+  color: #f7fff7;
+}
+
+.contact-list {
+  /* Removing the bullets of the list */
+  list-style-type: none;
+  /* Removing the default space  */
+  padding: 0;
+}
+
+/* Adding some padding for clicking space*/
+.contact-list a {
+  padding: 15px;
+  /* I want the links to adjust its possition verticaly and horizontaly when
+     the padding is added so I change them to inline-block */
+  display: inline-block;
+}
+
+
+/*                               RESPONSIVE
+------------------------------------------------------------------------------ */
+
+/* Rules to apply when the width of the view port is more than 749 px  */
+@media screen and (min-width: 750px) {
+  /* Center aligning the content */
+  header,
+  footer {
+    text-align: center;
+  }
+
+  /* In bigger screens, I want the images to float, otherwise, to be in one column */
+  .project-item img {
+    float: left;
+    margin-right: 20px;
+  }
+
+  /* I use CSS GRID for bigger screens to style the work experience unit */
+  /* Defining the Grid Container */
+  .job-item {
+    display: grid;
+    /* I'll use two columns, the second column will be twice the size of the first column */
+    grid-template-columns: 1fr 2fr;
+    column-gap: 20px;
+  }
+  /* Styling grid items */
+  .job-summary {
+    align-self: center;
+  }
+
+  /* I' ll use FLEXBOX to style the list containing the contact info I align them all in one line  */
+  .contact-list {
+    /* Initiating the Flexbox layout in the container */
+    display: flex;
+    /* Controlling the space between the items */
+    justify-content: center;
+  }
+}
+
+/* I'll create another media query this time using max width for screens smaller than 750px */
+@media screen and (max-width: 749px) {
+  h1 {
+    /* For the header I choose a different size for smaller sizes, I override the previous rule  */
+    font-size: 75px;
+    /* I change the line height too to remove the space between */
+    line-height: 0.9;
+    /* I add a little more space between these two headings */
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    line-height: 1;
+  }
+
+  /* I adjust the paddings of the links only for the smaller screens   */
+  .contact-list a {
+    padding: 5px;
+  }
+  /* Adjusting the image not to overlap the text  */
+  .education {
+    background-position: left;
+  }
+
+}
