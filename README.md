@@ -1,1 +1,1 @@
-CV information using HTML and CSS
+CV information implemented by HTML & CSS.
